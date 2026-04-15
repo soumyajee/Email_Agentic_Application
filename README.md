@@ -1,5 +1,3 @@
-# Email_Agentic_Application
-# Email_Agentic_Application
 # Email Generation Assistant
 
 An agentic email generation and evaluation system built with **LangGraph** and **OpenRouter**.
