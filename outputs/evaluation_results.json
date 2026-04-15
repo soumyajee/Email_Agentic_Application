@@ -1,0 +1,436 @@
+{
+  "metric_definitions": {
+    "factual_score": "Fact Recall Score = proportion of required facts included correctly.",
+    "tone_match_score": "Tone Match Score = alignment of language with requested tone.",
+    "conciseness_score": "Conciseness Score = clarity, brevity, and readability of the email."
+  },
+  "model_results": {
+    "baseline": {
+      "raw_results": [
+        {
+          "scenario_id": 1,
+          "strategy_name": "baseline",
+          "model_name": "anthropic/claude-opus-4.6",
+          "input": {
+            "intent": "Follow up after client meeting",
+            "key_facts": [
+              "Thank the client for meeting on Monday",
+              "Mention the pricing proposal was attached",
+              "Request feedback by Friday"
+            ],
+            "tone": "formal"
+          },
+          "generated_email": {
+            "subject": "Follow-Up on Monday's Meeting and Pricing Proposal",
+            "body": "Dear [Client Name],\n\nThank you for taking the time to meet with us on Monday. It was a pleasure discussing your needs and exploring how we can best support your objectives.\n\nAs discussed during our meeting, please find the pricing proposal attached for your review. The document outlines the scope of services, associated costs, and the terms we covered in our conversation.\n\nWe would greatly appreciate it if you could provide your feedback by Friday so that we may proceed accordingly and ensure alignment with your timeline.\n\nShould you have any questions or require further clarification regarding the proposal, please do not hesitate to reach out. We are happy to arrange a brief call or follow-up meeting at your convenience.\n\nWe look forward to hearing from you and to the opportunity of working together.\n\nKind regards,\n[Your Name]\n[Your Title]\n[Company Name]\n[Phone Number]\n[Email Address]"
+          },
+          "evaluation": {
+            "factual_score": 1.0,
+            "tone_match_score": 0.8,
+            "conciseness_score": 1.0,
+            "overall_score": 0.9333,
+            "details": {
+              "fact_result": {
+                "score": 1.0,
+                "details": {
+                  "definition": "Fact Recall Score = matched required facts / total required facts",
+                  "matched_facts": [
+                    "Thank the client for meeting on Monday",
+                    "Mention the pricing proposal was attached",
+                    "Request feedback by Friday"
+                  ],
+                  "missed_facts": []
+                }
+              },
+              "tone_result": {
+                "score": 0.8,
+                "details": {
+                  "definition": "Tone Match Score = matched tone markers / expected tone markers",
+                  "matched_markers": [
+                    "regards",
+                    "dear",
+                    "thank you",
+                    "please"
+                  ],
+                  "expected_markers": [
+                    "regards",
+                    "dear",
+                    "thank you",
+                    "please",
+                    "sincerely"
+                  ]
+                }
+              },
+              "conciseness_result": {
+                "score": 1.0,
+                "details": {
+                  "definition": "Conciseness Score measures readability, brevity, and structure.",
+                  "word_count": 146,
+                  "avg_sentence_length": 16.22,
+                  "paragraph_count": 7
+                }
+              }
+            }
+          },
+          "human_reference_email": "Subject: Follow-Up After Monday's Meeting\n\nDear [Client Name],\n\nThank you for meeting with us on Monday. As discussed, I have attached the pricing proposal for your review. We would appreciate your feedback by Friday so we can align on next steps.\n\nBest regards,\n[Your Name]",
+          "retry_count": 0
+        },
+        {
+          "scenario_id": 2,
+          "strategy_name": "baseline",
+          "model_name": "anthropic/claude-opus-4.6",
+          "input": {
+            "intent": "Request project update from internal team",
+            "key_facts": [
+              "Ask for status of API integration",
+              "Mention launch is scheduled for next Wednesday",
+              "Request blockers if any"
+            ],
+            "tone": "urgent"
+          },
+          "generated_email": {
+            "subject": "Urgent: API Integration Status Update Needed – Launch Next Wednesday",
+            "body": "Hi Team,\n\nI hope this message finds you well. I'm reaching out because I need an immediate update on the status of the API integration.\n\nAs you know, our launch is scheduled for next Wednesday, and we are quickly running out of runway. It is critical that we have a clear picture of where things stand right now so we can address any issues before they become launch-day problems.\n\nPlease reply by end of day today with the following:\n\n1. **Current status** of the API integration — what is complete and what remains?\n2. **Blockers** — are there any obstacles preventing progress that need to be escalated or resolved?\n3. **Confidence level** — are we on track to be fully ready by Wednesday?\n\nIf there are blockers, please flag them immediately so we can mobilize the right resources and keep this timeline intact. Do not wait until the next standup — time is of the essence.\n\nI appreciate your prompt attention to this. Let's make sure we go into launch week with zero surprises.\n\nThank you,\n[Your Name]"
+          },
+          "evaluation": {
+            "factual_score": 1.0,
+            "tone_match_score": 0.5,
+            "conciseness_score": 1.0,
+            "overall_score": 0.8333,
+            "details": {
+              "fact_result": {
+                "score": 1.0,
+                "details": {
+                  "definition": "Fact Recall Score = matched required facts / total required facts",
+                  "matched_facts": [
+                    "Ask for status of API integration",
+                    "Mention launch is scheduled for next Wednesday",
+                    "Request blockers if any"
+                  ],
+                  "missed_facts": []
+                }
+              },
+              "tone_result": {
+                "score": 0.5,
+                "details": {
+                  "definition": "Tone Match Score = matched tone markers / expected tone markers",
+                  "matched_markers": [
+                    "urgent",
+                    "today"
+                  ],
+                  "expected_markers": [
+                    "as soon as possible",
+                    "urgent",
+                    "today",
+                    "priority"
+                  ]
+                }
+              },
+              "conciseness_result": {
+                "score": 1.0,
+                "details": {
+                  "definition": "Conciseness Score measures readability, brevity, and structure.",
+                  "word_count": 178,
+                  "avg_sentence_length": 11.87,
+                  "paragraph_count": 8
+                }
+              }
+            }
+          },
+          "human_reference_email": "Subject: Urgent Request for API Integration Update\n\nHi Team,\n\nCould you please share the current status of the API integration? Our launch is scheduled for next Wednesday, so I need to understand whether there are any blockers that could impact the timeline.\n\nThanks,\n[Your Name]",
+          "retry_count": 0
+        },
+        {
+          "scenario_id": 3,
+          "strategy_name": "baseline",
+          "model_name": "anthropic/claude-opus-4.6",
+          "input": {
+            "intent": "Respond to delayed customer support case",
+            "key_facts": [
+              "Apologize for the delay",
+              "Mention issue is under investigation",
+              "Promise next update within 24 hours"
+            ],
+            "tone": "empathetic"
+          },
+          "generated_email": {
+            "subject": "Update on Your Support Case – We Apologize for the Delay",
+            "body": "Dear Valued Customer,\n\nThank you for your patience, and please accept our sincere apologies for the delay in getting back to you. We understand how frustrating it can be to wait for a resolution, and we want you to know that your concern has not been overlooked.\n\nOur team is actively investigating your issue to ensure we provide you with a thorough and accurate resolution. We appreciate you bearing with us as we work through the details.\n\nYou can expect to receive the next update from us within 24 hours. In the meantime, please don't hesitate to reach out if you have any additional questions or concerns — we are here to help.\n\nWe truly value your time and your trust in us, and we are committed to resolving this matter as quickly as possible.\n\nWarm regards,\n\n[Your Name]\n[Your Title]\n[Company Name]\nCustomer Support Team\n[Contact Information]"
+          },
+          "evaluation": {
+            "factual_score": 1.0,
+            "tone_match_score": 0.8,
+            "conciseness_score": 1.0,
+            "overall_score": 0.9333,
+            "details": {
+              "fact_result": {
+                "score": 1.0,
+                "details": {
+                  "definition": "Fact Recall Score = matched required facts / total required facts",
+                  "matched_facts": [
+                    "Apologize for the delay",
+                    "Mention issue is under investigation",
+                    "Promise next update within 24 hours"
+                  ],
+                  "missed_facts": []
+                }
+              },
+              "tone_result": {
+                "score": 0.8,
+                "details": {
+                  "definition": "Tone Match Score = matched tone markers / expected tone markers",
+                  "matched_markers": [
+                    "patience",
+                    "support",
+                    "understand",
+                    "appreciate"
+                  ],
+                  "expected_markers": [
+                    "patience",
+                    "support",
+                    "sorry",
+                    "understand",
+                    "appreciate"
+                  ]
+                }
+              },
+              "conciseness_result": {
+                "score": 1.0,
+                "details": {
+                  "definition": "Conciseness Score measures readability, brevity, and structure.",
+                  "word_count": 148,
+                  "avg_sentence_length": 18.5,
+                  "paragraph_count": 7
+                }
+              }
+            }
+          },
+          "human_reference_email": "Subject: Update on Your Support Request\n\nDear [Customer Name],\n\nI sincerely apologize for the delay in resolving your issue. Our team is actively investigating the matter, and I will provide you with another update within the next 24 hours.\n\nThank you for your patience.\n\nBest,\n[Your Name]",
+          "retry_count": 0
+        }
+      ],
+      "summary": {
+        "strategy_name": "baseline",
+        "model_name": "anthropic/claude-opus-4.6",
+        "average_factual_score": 1.0,
+        "average_tone_match_score": 0.7,
+        "average_conciseness_score": 1.0,
+        "average_overall_score": 0.9
+      }
+    },
+    "advanced": {
+      "raw_results": [
+        {
+          "scenario_id": 1,
+          "strategy_name": "advanced",
+          "model_name": "openai/gpt-5.4",
+          "input": {
+            "intent": "Follow up after client meeting",
+            "key_facts": [
+              "Thank the client for meeting on Monday",
+              "Mention the pricing proposal was attached",
+              "Request feedback by Friday"
+            ],
+            "tone": "formal"
+          },
+          "generated_email": {
+            "subject": "Follow-Up and Pricing Proposal",
+            "body": "Dear [Name],\n\nThank you for meeting with me on Monday. I appreciate your time and the opportunity to discuss your needs.\n\nAs discussed, I have attached the pricing proposal for your review. We would welcome your feedback by Friday and are happy to answer any questions in the meantime.\n\nBest regards,\n[Your Name]"
+          },
+          "evaluation": {
+            "factual_score": 1.0,
+            "tone_match_score": 0.6,
+            "conciseness_score": 0.75,
+            "overall_score": 0.7833,
+            "details": {
+              "fact_result": {
+                "score": 1.0,
+                "details": {
+                  "definition": "Fact Recall Score = matched required facts / total required facts",
+                  "matched_facts": [
+                    "Thank the client for meeting on Monday",
+                    "Mention the pricing proposal was attached",
+                    "Request feedback by Friday"
+                  ],
+                  "missed_facts": []
+                }
+              },
+              "tone_result": {
+                "score": 0.6,
+                "details": {
+                  "definition": "Tone Match Score = matched tone markers / expected tone markers",
+                  "matched_markers": [
+                    "regards",
+                    "dear",
+                    "thank you"
+                  ],
+                  "expected_markers": [
+                    "regards",
+                    "dear",
+                    "thank you",
+                    "please",
+                    "sincerely"
+                  ]
+                }
+              },
+              "conciseness_result": {
+                "score": 0.75,
+                "details": {
+                  "definition": "Conciseness Score measures readability, brevity, and structure.",
+                  "word_count": 53,
+                  "avg_sentence_length": 10.6,
+                  "paragraph_count": 4
+                }
+              }
+            }
+          },
+          "human_reference_email": "Subject: Follow-Up After Monday's Meeting\n\nDear [Client Name],\n\nThank you for meeting with us on Monday. As discussed, I have attached the pricing proposal for your review. We would appreciate your feedback by Friday so we can align on next steps.\n\nBest regards,\n[Your Name]",
+          "retry_count": 0
+        },
+        {
+          "scenario_id": 2,
+          "strategy_name": "advanced",
+          "model_name": "openai/gpt-5.4",
+          "input": {
+            "intent": "Request project update from internal team",
+            "key_facts": [
+              "Ask for status of API integration",
+              "Mention launch is scheduled for next Wednesday",
+              "Request blockers if any"
+            ],
+            "tone": "urgent"
+          },
+          "generated_email": {
+            "subject": "Urgent: Project Status Update Needed",
+            "body": "Team,\n\nPlease send me a brief update on the project status as soon as possible. I need to understand current progress, any open issues, and whether there are any blockers that need immediate attention.\n\nThanks,\n[Your Name]"
+          },
+          "evaluation": {
+            "factual_score": 0.6667,
+            "tone_match_score": 0.5,
+            "conciseness_score": 0.75,
+            "overall_score": 0.6389,
+            "details": {
+              "fact_result": {
+                "score": 0.6667,
+                "details": {
+                  "definition": "Fact Recall Score = matched required facts / total required facts",
+                  "matched_facts": [
+                    "Ask for status of API integration",
+                    "Request blockers if any"
+                  ],
+                  "missed_facts": [
+                    "Mention launch is scheduled for next Wednesday"
+                  ]
+                }
+              },
+              "tone_result": {
+                "score": 0.5,
+                "details": {
+                  "definition": "Tone Match Score = matched tone markers / expected tone markers",
+                  "matched_markers": [
+                    "as soon as possible",
+                    "urgent"
+                  ],
+                  "expected_markers": [
+                    "as soon as possible",
+                    "urgent",
+                    "today",
+                    "priority"
+                  ]
+                }
+              },
+              "conciseness_result": {
+                "score": 0.75,
+                "details": {
+                  "definition": "Conciseness Score measures readability, brevity, and structure.",
+                  "word_count": 37,
+                  "avg_sentence_length": 12.33,
+                  "paragraph_count": 3
+                }
+              }
+            }
+          },
+          "human_reference_email": "Subject: Urgent Request for API Integration Update\n\nHi Team,\n\nCould you please share the current status of the API integration? Our launch is scheduled for next Wednesday, so I need to understand whether there are any blockers that could impact the timeline.\n\nThanks,\n[Your Name]",
+          "retry_count": 1
+        },
+        {
+          "scenario_id": 3,
+          "strategy_name": "advanced",
+          "model_name": "openai/gpt-5.4",
+          "input": {
+            "intent": "Respond to delayed customer support case",
+            "key_facts": [
+              "Apologize for the delay",
+              "Mention issue is under investigation",
+              "Promise next update within 24 hours"
+            ],
+            "tone": "empathetic"
+          },
+          "generated_email": {
+            "subject": "Update on Your Support Case",
+            "body": "Dear [Name],\n\nI’m sorry for the delay in getting back to you, and I understand how frustrating this must be.\n\nPlease know that your issue is currently under investigation, and our team is actively working to determine the cause. I will share the next update with you within 24 hours.\n\nThank you for your patience.\n\nBest regards,\n[Your Name]"
+          },
+          "evaluation": {
+            "factual_score": 1.0,
+            "tone_match_score": 0.8,
+            "conciseness_score": 0.75,
+            "overall_score": 0.85,
+            "details": {
+              "fact_result": {
+                "score": 1.0,
+                "details": {
+                  "definition": "Fact Recall Score = matched required facts / total required facts",
+                  "matched_facts": [
+                    "Apologize for the delay",
+                    "Mention issue is under investigation",
+                    "Promise next update within 24 hours"
+                  ],
+                  "missed_facts": []
+                }
+              },
+              "tone_result": {
+                "score": 0.8,
+                "details": {
+                  "definition": "Tone Match Score = matched tone markers / expected tone markers",
+                  "matched_markers": [
+                    "patience",
+                    "support",
+                    "sorry",
+                    "understand"
+                  ],
+                  "expected_markers": [
+                    "patience",
+                    "support",
+                    "sorry",
+                    "understand",
+                    "appreciate"
+                  ]
+                }
+              },
+              "conciseness_result": {
+                "score": 0.75,
+                "details": {
+                  "definition": "Conciseness Score measures readability, brevity, and structure.",
+                  "word_count": 59,
+                  "avg_sentence_length": 11.8,
+                  "paragraph_count": 5
+                }
+              }
+            }
+          },
+          "human_reference_email": "Subject: Update on Your Support Request\n\nDear [Customer Name],\n\nI sincerely apologize for the delay in resolving your issue. Our team is actively investigating the matter, and I will provide you with another update within the next 24 hours.\n\nThank you for your patience.\n\nBest,\n[Your Name]",
+          "retry_count": 0
+        }
+      ],
+      "summary": {
+        "strategy_name": "advanced",
+        "model_name": "openai/gpt-5.4",
+        "average_factual_score": 0.8889,
+        "average_tone_match_score": 0.6333,
+        "average_conciseness_score": 0.75,
+        "average_overall_score": 0.7574
+      }
+    }
+  },
+  "recommended_model": "anthropic/claude-opus-4.6"
+}
